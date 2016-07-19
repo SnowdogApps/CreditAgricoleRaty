@@ -1,0 +1,41 @@
+<?php
+	$submitData = $this->getSubmitData();
+	$formAction =  "https://ewniosek.credit-agricole.pl/eWniosek/simulator_u.jsp?PARAM_TYPE=RAT";
+	$formAction .= '&PARAM_PROFILE='. $this->getStoreId() .'&PARAM_SETUP='. $this->getParamSetup();
+?>
+<h3>
+	<?php echo $this->__("Twoje zamówienie zostało przyjęte.") ?>
+</h3>
+<p>
+	<?php echo $this->__("Potwierdzenie zamówienia oraz ewentualne dodatkowe informacje otrzymasz mailem.") ?>
+</p>
+<p>
+	<?php echo $this->__("Wybrałeś formę płatności Credit Agricole Raty.") ?>
+</p>
+<p>
+	<?php echo $this->__("Do wypełnienia wniosku potrzebne będą dane z Twojego dowodu osobistego, a także informacje dotyczące miejsca i formy zatrudnienia oraz wysokości uzyskiwanego dochodu.") ?>
+	<br />
+	<?php echo $this->__("Jeżeli do decyzji kredytowej potrzebne będą dodatkowe informacje, poinformuje Cię o tym przedstawiciel Banku.") ?>
+</p>
+<form id="CASubmitForm" name="CASubmitForm" action="<?php echo $formAction; ?>" method="post">
+	<p>	<br />
+		<input type="submit" name="submit" value="<?php echo $this->__('Potwierdzam zamówienie');  ?>" class="button" />
+	</p>
+	<?php if ($submitData['PARAM_HASH']) : ?>
+		<input type="hidden" name="PARAM_TYPE" value="<?echo $submitData['PARAM_TYPE']; ?>"/>
+		<input type="hidden" name="PARAM_PROFILE" value="<?echo $submitData['PARAM_PROFILE']; ?>"/>
+		<input type="hidden" name="POST_ATTR" value="<?echo $submitData['POST_ATTR']; ?>"/>
+		<input type="hidden" name="cart.shopName" value="<?echo $submitData['cart.shopName']; ?>"/>
+		<input type="hidden" name="creditInfo.creditAmount" value="<?echo $submitData['creditInfo.creditAmount']; ?>"/>
+		<input type="hidden" name="creditInfo.creditPeriod" value="<?echo $submitData['creditInfo.creditPeriod']; ?>"/>
+		<input type="hidden" name="email.address" value="<?echo $submitData['email.address']; ?>"/>
+		<input type="hidden" name="cart.orderNumber" value="<?echo $submitData['cart.orderNumber']; ?>"/>
+		<input type="hidden" name="PARAM_CREDIT_AMOUNT" value="<?echo $submitData['PARAM_CREDIT_AMOUNT']; ?>"/>
+		<input type="hidden" name="PARAM_AUTH" value="<?echo $submitData['PARAM_AUTH']; ?>"/>
+		<input type="hidden" name="PARAM_HASH" value="<?echo $submitData['PARAM_HASH']; ?>"/>
+		<input type="hidden" name="randomizer" value="<?echo $submitData['randomizer']; ?>"/>
+		<?php foreach ($submitData['cartItems'] as $inputName=>$inputValue): ?>
+			<input type="hidden" name="<?php echo $inputName; ?>" value="<?echo $inputValue; ?>"/>
+		<?php endforeach; ?>
+	<?php endif; ?>
+</form>

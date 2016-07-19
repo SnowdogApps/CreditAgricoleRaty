@@ -1,0 +1,23 @@
+<?php $_product = Mage::registry("product"); ?>
+<?php $helper = Mage::helper('snowcreditagricoleraty'); ?>
+<?php $message =Mage::helper('snowcreditagricoleraty')->testProduct($_product); ?>
+<div class="snowcreditagricoleraty-product">
+	<?php switch ($message): case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_OK: ?>
+			<a href="<?php echo $this->getUrl('snowcreditagricoleraty/redirect/calculate', array('amount'=>$_product->getPrice())) ?>" target="_blank"><img src="<?php echo $this->getImageUrl() ?>" alt="<?php echo $this->__("Oblicz ratę") ?>" border="0" /></a>
+		<?php break ?>
+		<?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_LOW_TOTAL: ?>
+			<span class="snowcreditagricoleraty-wrongamount snowcreditagricoleraty-notenought">
+				<?php echo $this->__("Zakupy w systemie ratalnym Credit Agricole Raty dostępne są od %d zł wartości całego zamówienia", $this->getMinTotal()) ?>
+			</span>
+		<?php break ?>
+		<?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_HIGH_TOTAL: ?>
+			<span class="snowcreditagricoleraty-wrongamount snowcreditagricoleraty-tomuch">
+				<?php echo $this->__("Zakupy w systemie ratalnym Credit Agricole Raty dostępne są do %d zł wartości całego zamówienia.", $this->getMaxTotal()) ?>
+			</span>
+		<?php break ?>
+		<?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_EXCLUDED_PRODUCTS: ?>
+			<span class="snowcreditagricoleraty-excluded">
+				<?php echo $this->__("Credit Agricole Raty nie są dostępne dla tego produktu.") ?>
+			</span>
+	<?php endswitch; ?>
+</div>

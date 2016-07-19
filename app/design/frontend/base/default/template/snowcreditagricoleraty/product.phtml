@@ -1,0 +1,18 @@
+<div id="service-calculate-installment">
+	<?php if ($this->getImageType() == 'swf'): ?>
+
+
+	<embed type="application/x-shockwave-flash"
+	   src="<?php echo $this->getImageUrl(); ?>"
+	   width="<?php echo $this->getImageWidth(); ?>"
+	   height="<?php echo $this->getImageHeight(); ?>"
+	   id="CAButton"
+	   name="CAButton"
+	   bgcolor="#ffffff"
+	   quality="high"
+	   wmode="transparent"
+	   flashvars="rata_url=<?php echo $this->getRateUrl() ?>?posId=<?php echo $this->getPSP(); ?>%26creditAmount=<?php echo $this->getCreditAmount(); ?>&amp;click_url=<?php echo $this->getClickUrl(); ?>?PARAM_PROFILE=<?php echo $this->getPSP(); ?>%26PARAM_TYPE=RAT%26PARAM_CREDIT_AMOUNT=<?php echo $this->getCreditAmount(); ?>" />
+	<?php else: ?>
+		<span><a href="<?php echo $this->getClickUrl(); ?>?PARAM_PROFILE=<?php echo $this->getPSP(); ?>&PARAM_TYPE=RAT&PARAM_CREDIT_AMOUNT=<?php echo $this->getCreditAmount(); ?>" target="_blank"><img src="<?php echo $this->getImageUrl() ?>" alt="<?php echo $this->__("Oblicz wysokość raty") ?>" border="0"/></a></span>
+	<?php endif ?>
+</div>

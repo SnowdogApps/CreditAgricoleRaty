@@ -1,0 +1,87 @@
+<style>
+	div.snowcreditagricoleraty-payment-notice {
+		background: url("<?php echo $this->getImageURL() ?>") no-repeat scroll 5px center #EAF0EE;
+		border: 1px solid #CCCCCC;
+		margin-bottom: 10px;
+		padding: 10px 5px 5px 165px;
+	}
+	span.snowcreditagricoleraty-field-heading {
+		width: 230px;
+		display: inline-block;
+		font-weight: bold;
+	}
+	span.snowcreditagricoleraty-field-value {
+		font-style: italic;
+	}
+	ul.snowcreditagricoleraty {
+		list-style: circle;
+		padding-left: 15px;
+	}
+    #img-preview-div {
+        display: block;
+        position:fixed;
+        top: 200px;
+        right:30px;
+        border: 1px solid #999;
+        padding: 5px;
+        background-color: #fff;
+    }
+    #img-preview {
+        display:block;
+    }
+</style>
+<div class="snowcreditagricoleraty-payment-notice">
+    <h4><?php echo $this->__("Konfiguracja w systemie Credit Agricole eWniosek") ?></h4>
+	<div>
+		<?php echo $this->__("Aby korzystanie z płatności RATY Credit Agricole było możliwe należy dokonać autoryzacji adresów URL.") ?>
+		<ul class="snowcreditagricoleraty">
+			<li><?php echo $this->__("Zaloguj się do panelu dla sprzedawców on-line.") ?></li>
+			<li><?php echo $this->__("W menu wybierz: „Formularz zgłaszanych URLi”.") ?></li>
+			<li><?php echo $this->__("Wypełnij formularz zgodnie z poniższymi danymi.") ?></li>
+		</ul>
+	</div>
+	<div><span class="snowcreditagricoleraty-field-heading"><?php echo $this->__("URL Symulatora:") ?></span><span class="snowcreditagricoleraty-field-value"><?php echo $this->getUrl() ?></span></div>
+	<div><span class="snowcreditagricoleraty-field-heading"><?php echo $this->__("URL Wniosku:") ?></span><span class="snowcreditagricoleraty-field-value"><?php echo $this->getUrl() ?></span></div>
+	<div><span class="snowcreditagricoleraty-field-heading"><?php echo $this->__("URL Procedury:") ?></span><span class="snowcreditagricoleraty-field-value"><?php echo $this->getUrl() ?></span></div>
+	<div><span class="snowcreditagricoleraty-field-heading"><?php echo $this->__("URL powrotu pozytywnego:") ?></span><span class="snowcreditagricoleraty-field-value"><?php echo $this->getUrl('snowcreditagricoleraty/payment/success') ?></span></div>
+	<div><span class="snowcreditagricoleraty-field-heading"><?php echo $this->__("URL powrotu negatywnego:") ?></span><span class="snowcreditagricoleraty-field-value"><?php echo $this->getUrl('snowcreditagricoleraty/payment/failure') ?></span></div>
+</div>
+<div id="img-preview-div">
+    <?php echo $this->__("Podgląd obrazka:") ?><br />
+    <img id="img-preview" />
+</div>
+<script type="text/javascript">
+    function displayPreview(imageUrl) {
+        $('img-preview-div').show();
+        if (imageUrl.indexOf(".swf") != -1) {
+            var flashWidth;
+            if (imageUrl.indexOf('146x') != -1)
+                flashWidth = 146;
+            else
+                flashWidth = 370;
+
+            $('img-preview').replace('<div id="img-preview"><embed type="application/x-shockwave-flash" src="'+ imageUrl + '" id="undefined" name="undefined" bgcolor="#ffffff" quality="high" wmode="transparent" flashvars="rata_url=https://ewniosek.credit-agricole.pl/eWniosek/comm/getInstallment?posId=PSP1030180%26creditAmount=999.99" width="' +flashWidth+ '"></div>');
+        }
+        else {
+            $('img-preview').replace('<img src="'+ imageUrl +'" id="img-preview" />');
+        }
+    }
+    document.observe("dom:loaded", function() {
+        $('img-preview-div').hide();
+
+        $("payment_snowcreditagricoleraty_image_product").observe('change', function() {
+            var val = $(this)[$(this).selectedIndex].value;
+            displayPreview(val);
+        });
+
+        $("payment_snowcreditagricoleraty_image_infobox").observe('change', function() {
+            var val = $(this)[$(this).selectedIndex].value;
+            displayPreview(val);
+        });
+
+        $("payment_snowcreditagricoleraty_image_cart").observe('change', function() {
+            var val = $(this)[$(this).selectedIndex].value;
+            displayPreview(val);
+        });
+    });
+</script>

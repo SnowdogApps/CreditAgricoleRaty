@@ -1,0 +1,10 @@
+<h3>
+	<?php echo $this->__("Twój wniosek nie został wysłany.") ?>
+</h3>
+<p>
+	<?php echo $this->__("Informujemy, że nastąpiła rezygnacja z wypełnienia i wysłania wniosku o kredyt na zakup towarów i usług Credit Agricole Bank Polska S.A. dla zamówienia nr %s.", $this->getOrderId()) ?>
+	<?php echo $this->__("W związku z powyższym zamówienie nr %s nie zostanie zrealizowane.", $this->getOrderId()) ?>
+</p>
+<p>
+	<?php echo $this->__("W celu wybrania innej formy płatności dla zamówienia nr %s prosimy o kontakt z obsługą sklepu %s.", $this->getOrderId(), Mage::getStoreConfig("general/store_information/name")) ?>
+</p>

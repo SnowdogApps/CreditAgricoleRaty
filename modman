@@ -1,0 +1,8 @@
+app/code/community/Snowdog/CreditagricoleRaty							app/code/community/Snowdog/CreditagricoleRaty
+app/design/adminhtml/default/default/template/snowcreditagricoleraty	app/design/adminhtml/default/default/template/snowcreditagricoleraty
+app/design/frontend/base/default/layout/snowcreditagricoleraty.xml		app/design/frontend/base/default/layout/snowcreditagricoleraty.xml
+app/design/frontend/base/default/template/snowcreditagricoleraty		app/design/frontend/base/default/template/snowcreditagricoleraty
+app/etc/modules/Snowdog_CreditagricoleRaty.xml							app/etc/modules/Snowdog_CreditagricoleRaty.xml
+app/locale/pl_PL/Snowdog_CreditagricoleRaty.csv							app/locale/pl_PL/Snowdog_CreditagricoleRaty.csv
+skin/frontend/base/default/css/snowcreditagricoleraty.css				skin/frontend/base/default/css/snowcreditagricoleraty.css
+skin/frontend/base/default/js/snowcreditagricoleraty					skin/frontend/base/default/js/snowcreditagricoleraty

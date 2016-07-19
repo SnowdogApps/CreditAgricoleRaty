@@ -1,0 +1,20 @@
+<?php $_quote = Mage::getModel('checkout/session')->getQuote(); ?>
+<?php $helper = Mage::helper('snowcreditagricoleraty'); ?>
+<?php $message = $helper->testQuote($_quote); ?>
+
+<div class="snowcreditagricoleraty-cart">
+<?php switch ($message): case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_OK: ?>
+		<a href="<?php echo $this->getUrl('snowcreditagricoleraty/redirect/calculate', array('amount'=>$_quote->getGrandTotal())) ?>" target="_blank"><img src="<?php echo $this->getImageUrl() ?>" alt="<?php echo $this->__("Oblicz ratę") ?>" border="0" /></a>
+	<?php break ?>
+	<?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_LOW_TOTAL: ?>
+	<?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_HIGH_TOTAL: ?>
+		<span class="snowcreditagricoleraty-wrongamount">
+			<?php echo $this->__("Credit Agricole Raty są dostępne dla wartości zamówienia z przedziału %d - %d zł.", $this->getMinTotal(), $this->getMaxTotal()) ?>
+		</span>
+	<?php break ?>
+	<?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_EXCLUDED_PRODUCTS: ?>
+		<span class="snowcreditagricoleraty-excluded">
+			<?php echo $this->__("Jeden lub więcej produktów nie może być zakupionych w systemie ratalnym Credit Agricole.") ?>
+		</span>
+<?php endswitch; ?>
+</div>

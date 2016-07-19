@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Snowdog_CreditagricoleRaty>
+			<active>true</active>
+			<codePool>community</codePool>
+		</Snowdog_CreditagricoleRaty>
+	</modules>
+</config>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<sections>
+		<payment>
+			<groups>
+				<snowcreditagricoleraty translate="label" module="snowcreditagricoleraty">
+					<label>Credit Agricole Raty (Snowdog)</label>
+					<front_type>text</front_type>
+					<sort_order>834</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>0</show_in_store>
+					<fields>
+						<hint>
+							<frontend_model>snowcreditagricoleraty/hint</frontend_model>
+							<sort_order>0</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</hint>
+						<active translate="label">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>1</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</active>
+						<title translate="label">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>2</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</title>
+						<psp_id translate="label">
+							<label>Identyfikator sklepu w systemie RATY Credit Agricole</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>3</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</psp_id>
+						<auth_password translate="label">
+							<label>Hasło</label>
+							<frontend_type>obscure</frontend_type>
+							<backend_model>adminhtml/system_config_backend_encrypted</backend_model>
+							<sort_order>10</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</auth_password>
+						<order_status translate="label">
+							<label>New order status</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_order_status</source_model>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</order_status>
+						<allowspecific translate="label">
+							<label>Payment from applicable countries</label>
+							<frontend_type>allowspecific</frontend_type>
+							<sort_order>50</sort_order>
+							<source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</allowspecific>
+						<specificcountry translate="label">
+							<label>Payment from Specific countries</label>
+							<frontend_type>multiselect</frontend_type>
+							<sort_order>51</sort_order>
+							<source_model>adminhtml/system_config_source_country</source_model>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</specificcountry>
+						<min_order_total translate="label">
+							<label>Minimum order value</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>98</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</min_order_total>
+						<max_order_total translate="label">
+							<label>Maximum order value</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>99</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</max_order_total>
+						<all_products_eligible translate="label">
+							<label>Set all products as eligable for payment</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>100</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</all_products_eligible>
+						<minimum_product_price translate="label comment">
+							<label>Minimum product price</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>101</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+							<depends>
+								<all_products_eligible>1</all_products_eligible>
+							</depends>
+							<comment>0 - no limits</comment>
+						</minimum_product_price>
+						<image_infobox translate="label">
+							<label>Grafika - Infromacja o procesie Credit Agricole Raty</label>
+							<frontend_type>select</frontend_type>
+							<source_model>snowcreditagricoleraty/options_image</source_model>
+							<sort_order>300</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</image_infobox>
+						<image_product translate="label">
+							<label>Grafika - Oblicz ratę (strona produktu)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>snowcreditagricoleraty/options_imagesCalculate</source_model>
+							<sort_order>310</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</image_product>
+						<image_cart translate="label">
+							<label>Grafika - Oblicz ratę (koszyk)</label>
+							<frontend_type>select</frontend_type>
+							<source_model>snowcreditagricoleraty/options_imagesCalculate</source_model>
+							<sort_order>320</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</image_cart>
+						<save_logs translate="label">
+							<label>Zapisuj dane komunikacji z systemem CA w logach</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>400</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>0</show_in_website>
+							<show_in_store>0</show_in_store>
+						</save_logs>
+					</fields>
+				</snowcreditagricoleraty>
+			</groups>
+		</payment>
+	</sections>
+</config>

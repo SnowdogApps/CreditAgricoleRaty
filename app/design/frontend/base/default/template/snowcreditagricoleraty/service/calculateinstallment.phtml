@@ -1,0 +1,7 @@
+<?php if ( ! ($error = $this->getError())):
+  $installment = $this->getInstallment(); ?>
+  <p><?php echo Mage::helper('snowcreditagricoleraty')->__('installmentAmount: %s', $this->helper('core')->currency($installment['installmentAmount'], true, false)) ?></p>
+  <p><?php echo Mage::helper('snowcreditagricoleraty')->__('rsso: %s', $installment['rrso'] . '%') ?></p>
+<?php else: ?>
+  <p><?php echo $error; ?></p>
+<?php endif;?>
