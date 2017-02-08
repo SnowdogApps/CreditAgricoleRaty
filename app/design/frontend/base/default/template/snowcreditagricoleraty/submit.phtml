@@ -22,20 +22,20 @@
 		<input type="submit" name="submit" value="<?php echo $this->__('Potwierdzam zamówienie');  ?>" class="button" />
 	</p>
 	<?php if ($submitData['PARAM_HASH']) : ?>
-		<input type="hidden" name="PARAM_TYPE" value="<?echo $submitData['PARAM_TYPE']; ?>"/>
-		<input type="hidden" name="PARAM_PROFILE" value="<?echo $submitData['PARAM_PROFILE']; ?>"/>
-		<input type="hidden" name="POST_ATTR" value="<?echo $submitData['POST_ATTR']; ?>"/>
-		<input type="hidden" name="cart.shopName" value="<?echo $submitData['cart.shopName']; ?>"/>
-		<input type="hidden" name="creditInfo.creditAmount" value="<?echo $submitData['creditInfo.creditAmount']; ?>"/>
-		<input type="hidden" name="creditInfo.creditPeriod" value="<?echo $submitData['creditInfo.creditPeriod']; ?>"/>
-		<input type="hidden" name="email.address" value="<?echo $submitData['email.address']; ?>"/>
-		<input type="hidden" name="cart.orderNumber" value="<?echo $submitData['cart.orderNumber']; ?>"/>
-		<input type="hidden" name="PARAM_CREDIT_AMOUNT" value="<?echo $submitData['PARAM_CREDIT_AMOUNT']; ?>"/>
-		<input type="hidden" name="PARAM_AUTH" value="<?echo $submitData['PARAM_AUTH']; ?>"/>
-		<input type="hidden" name="PARAM_HASH" value="<?echo $submitData['PARAM_HASH']; ?>"/>
-		<input type="hidden" name="randomizer" value="<?echo $submitData['randomizer']; ?>"/>
+		<input type="hidden" name="PARAM_TYPE" value="<?php echo $submitData['PARAM_TYPE']; ?>"/>
+		<input type="hidden" name="PARAM_PROFILE" value="<?php echo $submitData['PARAM_PROFILE']; ?>"/>
+		<input type="hidden" name="POST_ATTR" value="<?php echo $submitData['POST_ATTR']; ?>"/>
+		<input type="hidden" name="cart.shopName" value="<?php echo $submitData['cart.shopName']; ?>"/>
+		<input type="hidden" name="creditInfo.creditAmount" value="<?php echo $submitData['creditInfo.creditAmount']; ?>"/>
+		<input type="hidden" name="creditInfo.creditPeriod" value="<?php echo $submitData['creditInfo.creditPeriod']; ?>"/>
+		<input type="hidden" name="email.address" value="<?php echo $submitData['email.address']; ?>"/>
+		<input type="hidden" name="cart.orderNumber" value="<?php echo $submitData['cart.orderNumber']; ?>"/>
+		<input type="hidden" name="PARAM_CREDIT_AMOUNT" value="<?php echo $submitData['PARAM_CREDIT_AMOUNT']; ?>"/>
+		<input type="hidden" name="PARAM_AUTH" value="<?php echo $submitData['PARAM_AUTH']; ?>"/>
+		<input type="hidden" name="PARAM_HASH" value="<?php echo $submitData['PARAM_HASH']; ?>"/>
+		<input type="hidden" name="randomizer" value="<?php echo $submitData['randomizer']; ?>"/>
 		<?php foreach ($submitData['cartItems'] as $inputName=>$inputValue): ?>
-			<input type="hidden" name="<?php echo $inputName; ?>" value="<?echo $inputValue; ?>"/>
+			<input type="hidden" name="<?php echo $inputName; ?>" value="<?php echo $inputValue; ?>"/>
 		<?php endforeach; ?>
 	<?php endif; ?>
 </form>
