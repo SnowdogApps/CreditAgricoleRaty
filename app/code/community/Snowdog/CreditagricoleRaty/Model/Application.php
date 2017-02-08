@@ -1,26 +1,7 @@
 <?php
 
 /**
- * Application
- *
- * @method string getIncrementalId()
- * @method Snowdog_CreditagricoleRaty_Model_Application setIncrementalId(string $incrementalId)
- * @method string getParamSetup()
- * @method Snowdog_CreditagricoleRaty_Model_Application setParamSetup(string $paramSetup)
- * @method boolean getSubmitted()
- * @method Snowdog_CreditagricoleRaty_Model_Application setSubmitted(boolean $submitted)
- * @method string getStatusCA()
- * @method Snowdog_CreditagricoleRaty_Model_Application setStatusCA(string $status)
- * @method string getStatusCAInfo()
- * @method Snowdog_CreditagricoleRaty_Model_Application setStatusCAInfo(string $info)
- * @method string getApplNumberCA()
- * @method Snowdog_CreditagricoleRaty_Model_Application getApplNumberCA(string $number)
- * @method string getApplNumberExt()
- * @method Snowdog_CreditagricoleRaty_Model_Application getApplNumberExt(string $number)
- * @method string getLastModified()
- * @method Snowdog_CreditagricoleRaty_Model_Application setLastModified(string $date)
- *
- * @author mamut
+ * Class Snowdog_CreditagricoleRaty_Model_Application
  */
 class Snowdog_CreditagricoleRaty_Model_Application extends Mage_Core_Model_Abstract {
 	const STATUS_NEW = 1;
