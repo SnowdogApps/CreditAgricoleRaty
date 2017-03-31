@@ -132,7 +132,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->writeRaw(number_format($item->getDiscountAmount() * (-1.0), 2, '.', ''));
 			$xml->endElement();
 		}
-		if ($order->getShippingInclTax() != 0.00) {
+		if ($order->getShippingInclTax() > 0) {
 			++$i;
 			$shipping = $order->getShippingMethod(true);
 			$xml->startElement("element");
@@ -140,7 +140,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			if ($shipping->getCarrierName()) {
 				$xml->writeRaw($shipping->getCarrierName());
 			} else {
-				$xml->writeRaw(Mage::helper('snowcreditagricoleraty')->__("Koszty dostawy"));
+				$xml->writeRaw("Przesyłka");
 			}
 			$xml->endElement();
 			$xml->startElement("element");
@@ -216,14 +216,6 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->writeAttribute("importAs", "permanentAddress.streetName.value");
 			$xml->writeRaw($billingAddres->getStreetFull());
 			$xml->endElement();
-//		$xml->startElement("element");
-//		$xml->writeAttribute("importAs", "permanentAddress.streetNumber.value");
-//		$xml->writeRaw("");
-//		$xml->endElement();
-//		$xml->startElement("element");
-//		$xml->writeAttribute("importAs", "permanentAddress.apartmentNumber.value");
-//		$xml->writeRaw("");
-//		$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "permanentAddress.city.value");
 			$xml->writeRaw($billingAddres->getCity());
@@ -240,13 +232,6 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->endElement();
 			$xml->endElement();
 		}
-//		$xml->startElement("block");
-//		$xml->writeAttribute("id", "phones");
-//		$xml->startElement("element");
-//		$xml->writeAttribute("importAs", "phones.contactPhone.value");
-//		$xml->writeRaw("");
-//		$xml->endElement();
-//		$xml->endElement();
 		$xml->endElement();
 		$string_xml = $xml->outputMemory();
 		return $string_xml;
@@ -272,6 +257,14 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$items["cart.itemName$i"] 	= substr($item->getName(), 0, 40);
 			$items["cart.itemQty$i"]	= number_format($item->getQtyOrdered(), 0);
 			$items["cart.itemPrice$i"]	= number_format($item->getPriceInclTax(), 2, '.', '');
+		}
+
+		//add shipping cost as item
+		if ($order->getShippingInclTax() > 0) {
+			$i++;
+			$items["cart.itemName$i"] 	= 'Przesyłka';
+			$items["cart.itemQty$i"]	= 1;
+			$items["cart.itemPrice$i"]	= number_format($order->getShippingInclTax(), 2, '.', '');
 		}
 
 		//prepare submit data (order and auth)
