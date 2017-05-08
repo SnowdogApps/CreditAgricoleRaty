@@ -102,7 +102,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			++$i;
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemName" . $i . ".value");
-			$xml->writeRaw(substr($item->getName(), 0, 40));
+			$xml->writeRaw(mb_substr($item->getName(), 0, 40));
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemQty" . $i . ".value");
@@ -118,7 +118,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemName" . $i . ".value");
 			if ($order->getDiscountDescription()) {
-				$xml->writeRaw(substr($order->getDiscountDescription(), 0, 40));
+				$xml->writeRaw(mb_substr($order->getDiscountDescription(), 0, 40));
 			} else {
 				$xml->writeRaw(Mage::helper('snowcreditagricoleraty')->__("Zniżka"));
 			}
@@ -200,12 +200,12 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->startElement("element");
 			$xml->writeAttribute("id", "applicantFirstName");
 			$xml->writeAttribute("importAs", "personalData.firstName.value");
-			$xml->writeRaw(substr($order->getCustomerFirstname(), 0, 20));
+			$xml->writeRaw(mb_substr($order->getCustomerFirstname(), 0, 20));
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("id", "applicantLastName");
 			$xml->writeAttribute("importAs", "personalData.lastName.value");
-			$xml->writeRaw(substr($order->getCustomerLastname(), 0, 40));
+			$xml->writeRaw(mb_substr($order->getCustomerLastname(), 0, 40));
 			$xml->endElement();
 			$billingAddres = $order->getBillingAddress();
 			/* @var $billingAddres Mage_Sales_Model_Order_Address */
@@ -254,7 +254,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			}
 			$i++;
 
-			$items["cart.itemName$i"] 	= substr($item->getName(), 0, 40);
+			$items["cart.itemName$i"] 	= mb_substr($item->getName(), 0, 40);
 			$items["cart.itemQty$i"]	= number_format($item->getQtyOrdered(), 0);
 			$items["cart.itemPrice$i"]	= number_format($item->getPriceInclTax(), 2, '.', '');
 		}
