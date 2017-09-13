@@ -35,7 +35,7 @@
 		<input type="hidden" name="PARAM_HASH" value="<?php echo $submitData['PARAM_HASH']; ?>"/>
 		<input type="hidden" name="randomizer" value="<?php echo $submitData['randomizer']; ?>"/>
 		<?php foreach ($submitData['cartItems'] as $inputName=>$inputValue): ?>
-			<input type="hidden" name="<?php echo $inputName; ?>" value="<?php echo $inputValue; ?>"/>
+			<input type="hidden" name="<?php echo $inputName; ?>" value="<?php echo htmlspecialchars($inputValue); ?>"/>
 		<?php endforeach; ?>
 	<?php endif; ?>
 </form>
