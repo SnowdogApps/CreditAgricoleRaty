@@ -1,5 +1,9 @@
 # Credit Agricole Raty for Magento 1.x
 
+### 1.5.1
+* Unnecessary file removed
+* Input value escape
+
 ### 1.5.0
 * Added shipping costs to submit form
 
