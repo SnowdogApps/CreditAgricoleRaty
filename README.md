@@ -1,5 +1,8 @@
 # Credit Agricole Raty for Magento 1.x
 
+### 1.5.3
+* Remove @author tag from the doc block
+
 ### 1.5.1
 * Unnecessary file removed
 * Input value escape
