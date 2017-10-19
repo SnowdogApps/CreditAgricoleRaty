@@ -2,8 +2,6 @@
 
 /**
  * Payment
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Model_Payment extends Mage_Payment_Model_Method_Abstract {
 

@@ -2,8 +2,6 @@
 
 /**
  * Image
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Model_Options_Image extends Mage_Core_Model_Abstract {
 	public function toOptionArray() {

@@ -2,8 +2,6 @@
 
 /**
  * RedirectController
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_RedirectController extends Mage_Core_Controller_Front_Action {
 	protected $_storeId;

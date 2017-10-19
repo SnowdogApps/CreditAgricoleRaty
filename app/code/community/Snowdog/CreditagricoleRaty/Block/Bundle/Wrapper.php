@@ -2,8 +2,6 @@
 
 /**
  * BundleWrapper
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Block_Bundle_Wrapper extends Snowdog_CreditagricoleRaty_Block_Abstract {
 	protected $_template = 'snowcreditagricoleraty/bundle/wrapper.phtml';

@@ -2,8 +2,6 @@
 
 /**
  * Order
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Block_Order extends Mage_Payment_Block_Info {
 
