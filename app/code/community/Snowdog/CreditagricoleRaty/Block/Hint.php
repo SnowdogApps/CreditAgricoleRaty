@@ -2,8 +2,6 @@
 
 /**
  * Hint
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Block_Hint extends Mage_Adminhtml_Block_Abstract implements Varien_Data_Form_Element_Renderer_Interface {
 

@@ -2,8 +2,6 @@
 
 /**
  * Product
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Block_Bundle_Product extends Snowdog_CreditagricoleRaty_Block_Abstract {
 

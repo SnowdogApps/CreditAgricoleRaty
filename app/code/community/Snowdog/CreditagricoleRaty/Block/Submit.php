@@ -2,8 +2,6 @@
 
 /**
  * Submit
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Block_Submit extends Mage_Core_Block_Template {
 

@@ -2,8 +2,6 @@
 
 /**
  * ExchangeController
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_InfoController extends Mage_Core_Controller_Front_Action {
 	public function bundleUpdateAction() {

@@ -2,8 +2,6 @@
 
 /**
  * Payment
- *
- * @author mamut
  */
 class Snowdog_CreditagricoleRaty_Block_Payment extends Mage_Payment_Block_Form {
 	protected function _construct() {

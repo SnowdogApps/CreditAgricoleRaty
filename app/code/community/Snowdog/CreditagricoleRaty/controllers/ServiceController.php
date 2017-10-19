@@ -1,8 +1,6 @@
 <?php
 /**
  * ServiceController
- *
- * @author maciek
  */
 
 class Snowdog_CreditagricoleRaty_ServiceController extends Mage_Core_Controller_Front_Action {
