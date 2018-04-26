@@ -1,42 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <layout version="1.0.0">
-  <default>
-    <reference name="head">
-      <action method="addItem"><type>skin_css</type><name>css/snowcreditagricoleraty.css</name></action>
-    </reference>
-    <reference name="right">
-      <block type="snowcreditagricoleraty/infobox" template="snowcreditagricoleraty/infobox.phtml" name="creditagricoleraty.infobox" />
-    </reference>
-  </default>
-  <snowcreditagricoleraty_payment_success>
-    <reference name="content">
-      <block type="snowcreditagricoleraty/positive" template="snowcreditagricoleraty/positive.phtml" name="creditagricoleraty.success" />
-    </reference>
-  </snowcreditagricoleraty_payment_success>
-  <snowcreditagricoleraty_payment_failure>
-    <reference name="content">
-      <block type="snowcreditagricoleraty/negative" template="snowcreditagricoleraty/negative.phtml" name="creditagricoleraty.negative" />
-    </reference>
-  </snowcreditagricoleraty_payment_failure>
-  <snowcreditagricoleraty_payment_submit>
-    <reference name="content">
-      <block type="snowcreditagricoleraty/submit" template="snowcreditagricoleraty/submit.phtml" name="creditagricoleraty.submit" />
-    </reference>
-  </snowcreditagricoleraty_payment_submit>
-  <snowcreditagricoleraty_payment_error>
-    <reference name="content">
-      <block type="snowcreditagricoleraty/error" template="snowcreditagricoleraty/error.phtml" name="creditagricoleraty.error" />
-    </reference>
-  </snowcreditagricoleraty_payment_error>
-  <catalog_product_view>
-    <reference name="product.info.extrahint">
-      <block type="snowcreditagricoleraty/product" template="snowcreditagricoleraty/product.phtml" name="creditagricoleraty.product" />
-    </reference>
-  </catalog_product_view>
-  <checkout_cart_index>
-    <reference name="checkout.cart.methods">
-      <block type="snowcreditagricoleraty/cart" template="snowcreditagricoleraty/cart.phtml" name="checkout.cart.methods.creditagricoleraty" />
-    </reference>
-  </checkout_cart_index>
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/snowcreditagricoleraty.css</name></action>
+        </reference>
+        <reference name="right">
+            <block type="snowcreditagricoleraty/infobox" template="snowcreditagricoleraty/infobox.phtml" name="creditagricoleraty.infobox" />
+        </reference>
+    </default>
+    <snowcreditagricoleraty_payment_success>
+        <reference name="content">
+            <block type="snowcreditagricoleraty/positive" template="snowcreditagricoleraty/positive.phtml" name="creditagricoleraty.success" />
+        </reference>
+    </snowcreditagricoleraty_payment_success>
+    <snowcreditagricoleraty_payment_failure>
+        <reference name="content">
+            <block type="snowcreditagricoleraty/negative" template="snowcreditagricoleraty/negative.phtml" name="creditagricoleraty.negative" />
+        </reference>
+    </snowcreditagricoleraty_payment_failure>
+    <snowcreditagricoleraty_payment_submit>
+        <reference name="content">
+          <block type="snowcreditagricoleraty/submit" template="snowcreditagricoleraty/submit.phtml" name="creditagricoleraty.submit" />
+        </reference>
+    </snowcreditagricoleraty_payment_submit>
+    <snowcreditagricoleraty_payment_error>
+        <reference name="content">
+            <block type="snowcreditagricoleraty/error" template="snowcreditagricoleraty/error.phtml" name="creditagricoleraty.error" />
+        </reference>
+    </snowcreditagricoleraty_payment_error>
+    <catalog_product_view>
+        <reference name="product.info.extrahint">
+            <block
+                type="snowcreditagricoleraty/product"
+                template="snowcreditagricoleraty/product.phtml"
+                name="creditagricoleraty.product"
+            />
+    </catalog_product_view>
+    <checkout_cart_index>
+        <reference name="checkout.cart.methods">
+            <block
+                type="snowcreditagricoleraty/cart"
+                template="snowcreditagricoleraty/cart.phtml"
+                name="checkout.cart.methods.creditagricoleraty"
+            />
+        </reference>
+    </checkout_cart_index>
 </layout>
