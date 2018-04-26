@@ -1,22 +1,21 @@
 <div class="snowcreditagricoleraty-product">
-    <?php switch ($this->getMessage()): ?>
-        <?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_OK: ?>
-            <?php
-            $url = $this->getUrl(
-                'snowcreditagricoleraty/redirect/calculate',
-                array('amount' => $this->getPrice())
-            );
-            ?>
-            <a
-                href="<?= $url ?>"
-                target="_blank"
-            >
-                <img
-                    src="<?= $this->getImageUrl() ?>"
-                    alt="<?= $this->__("Oblicz ratę") ?>"
-                    border="0"
-                />
-            </a>
+    <?php switch ($this->getMessage()): case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_OK: ?>
+        <?php
+        $url = $this->getUrl(
+            'snowcreditagricoleraty/redirect/calculate',
+            array('amount' => $this->getPrice())
+        );
+        ?>
+        <a
+            href="<?= $url ?>"
+            target="_blank"
+        >
+            <img
+                src="<?= $this->getImageUrl() ?>"
+                alt="<?= $this->__("Oblicz ratę") ?>"
+                border="0"
+            />
+        </a>
         <?php break ?>
     <?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_LOW_TOTAL: ?>
         <span class="snowcreditagricoleraty-notenought">
@@ -43,5 +42,6 @@
         <span class="snowcreditagricoleraty-excluded">
             <?= $this->__("Jeden lub więcej produktów składowych tego produktu nie może być zakupionych w systemie ratalnym Credit Agricole.") ?>
         </span>
+        <?php break ?>
     <?php endswitch; ?>
 </div>
