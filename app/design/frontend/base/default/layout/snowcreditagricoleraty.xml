@@ -35,6 +35,7 @@
                 template="snowcreditagricoleraty/product.phtml"
                 name="creditagricoleraty.product"
             />
+        </reference>
     </catalog_product_view>
     <checkout_cart_index>
         <reference name="checkout.cart.methods">
