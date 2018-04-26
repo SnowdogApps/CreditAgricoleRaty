@@ -37,6 +37,25 @@
             />
         </reference>
     </catalog_product_view>
+    <PRODUCT_TYPE_bundle>
+       <reference name="head">
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/snowcreditagricoleraty/bundle.js</name>
+            </action>
+            <action method="addItem">
+                <type>skin_js</type>
+                <name>js/snowcreditagricoleraty/service.js</name>
+            </action>
+        </reference>
+        <reference name="product.info.extrahint">
+            <block
+                type="snowcreditagricoleraty/bundle_wrapper"
+                template="snowcreditagricoleraty/bundle/wrapper.phtml"
+                name="creditagricoleraty.product-bundle"
+            />
+        </reference>
+    </PRODUCT_TYPE_bundle>
     <checkout_cart_index>
         <reference name="checkout.cart.methods">
             <block
