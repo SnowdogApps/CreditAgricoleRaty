@@ -1,6 +1,11 @@
 <div
     id="service-calculate-installment"
-    class="ca-raty"
+    class="
+        ca-raty
+        <?php if ($this->isBundle()): ?>
+        ca-raty--disabled
+        <?php endif; ?>
+    "
 >
     <?php if ($this->getImageType() == 'swf'): ?>
         <embed

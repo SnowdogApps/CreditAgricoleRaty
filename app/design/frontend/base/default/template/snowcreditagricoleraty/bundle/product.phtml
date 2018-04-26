@@ -9,16 +9,50 @@
         <a
             href="<?= $url ?>"
             target="_blank"
+            class="snowcreditagricoleraty-product__btn"
         >
             <img
                 src="<?= $this->getImageUrl() ?>"
                 alt="<?= $this->__("Oblicz ratę") ?>"
                 border="0"
+                class="snowcreditagricoleraty-product__image"
             />
         </a>
         <?php break ?>
     <?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_LOW_TOTAL: ?>
-        <span class="snowcreditagricoleraty-notenought">
+    <?php
+        $url = $this->getUrl(
+            'snowcreditagricoleraty/redirect/calculate',
+            array('amount' => $this->getPrice())
+        );
+        ?>
+        <a
+            href="<?= $url ?>"
+            target="_blank"
+            class="
+                snowcreditagricoleraty-product__btn
+                snowcreditagricoleraty-product__btn--disabled
+            "
+        >
+            <img
+                src="<?= $this->getImageUrl() ?>"
+                alt="<?= $this->__("Oblicz ratę") ?>"
+                border="0"
+                class="snowcreditagricoleraty-product__image"
+            />
+            <div class="
+                     snowcreditagricoleraty-product__tooltip
+                     snowcreditagricoleraty-product__tooltip--hidden
+                 "
+            >
+                <?= $this->__("Wybierz opcje produktu by obliczyć ratę") ?>
+            </div>
+        </a>
+        <span class="
+                 snowcreditagricoleraty-notenought
+                 snowcreditagricoleraty-msg
+              "
+        >
             <?= $this->__(
                 "Zakupy w systemie ratalnym Credit Agricole Raty dostępne są od %d zł wartości całego zamówienia",
                 $this->getMinTotal()
@@ -26,7 +60,11 @@
         </span>
         <?php break ?>
     <?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_HIGH_TOTAL: ?>
-        <span class="snowcreditagricoleraty-tomuch">
+        <span class="
+                  snowcreditagricoleraty-tomuch
+                  snowcreditagricoleraty-msg
+              "
+        >
         <?= $this->__(
             "Zakupy w systemie ratalnym Credit Agricole Raty dostępne są do %d zł wartości całego zamówienia.",
             $this->getMaxTotal()
@@ -34,12 +72,20 @@
         </span>
         <?php break ?>
     <?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_EXCLUDED_PRODUCTS: ?>
-        <span class="snowcreditagricoleraty-excluded">
+        <span class="
+                  snowcreditagricoleraty-excluded
+                  snowcreditagricoleraty-msg
+              "
+        >
             <?= $this->__("Credit Agricole Raty nie są dostępne dla tego produktu.") ?>
         </span>
         <?php break ?>
     <?php case Snowdog_CreditagricoleRaty_Helper_Data::PAYMENT_EXCLUDED_SUBPRODUCTS: ?>
-        <span class="snowcreditagricoleraty-excluded">
+        <span class="
+                  snowcreditagricoleraty-excluded
+                  snowcreditagricoleraty-msg
+              "
+        >
             <?= $this->__("Jeden lub więcej produktów składowych tego produktu nie może być zakupionych w systemie ratalnym Credit Agricole.") ?>
         </span>
         <?php break ?>

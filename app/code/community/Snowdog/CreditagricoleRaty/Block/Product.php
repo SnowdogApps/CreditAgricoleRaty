@@ -54,6 +54,16 @@ class Snowdog_CreditagricoleRaty_Block_Product extends Snowdog_CreditagricoleRat
     {
         return $this->_imageModel->getImageHeight();
     }
+    public function isBundle() {
+        $product = Mage::registry('current_product');
+        switch ($product->getTypeId()) {
+            case Mage_Catalog_Model_Product_Type::TYPE_BUNDLE:
+                return true;
+                break;
+            default:
+                return false;
+        }
+    }
 
     public function _toHtml()
     {

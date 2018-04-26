@@ -1,9 +1,11 @@
+<div
+    id="snowcreditagricoleraty-bundleplaceholder"
+    class="ca-raty-bundle"
+>
+    <?= $this->getChildHtml('product') ?>
+</div>
 <script>
     var creditagricoleRatyBundle = new CreditagricoleRaty.Bundle(
         <?= $this->getJsonConfig() ?>
     );
 </script>
-
-<div id="snowcreditagricoleraty-bundleplaceholder">
-    <?= $this->getChildHtml('product') ?>
-</div>
