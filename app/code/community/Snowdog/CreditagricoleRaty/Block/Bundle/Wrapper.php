@@ -14,7 +14,9 @@ class Snowdog_CreditagricoleRaty_Block_Bundle_Wrapper extends Snowdog_Creditagri
 
     public function getJsonConfig()
     {
-        $config = array('url' => $this->getUrl('snowcreditagricoleraty/info/bundleUpdate'));
+        $config = array(
+            'url' => $this->getUrl('snowcreditagricoleraty/info/bundleUpdate')
+        );
         return json_encode($config);
     }
 }
