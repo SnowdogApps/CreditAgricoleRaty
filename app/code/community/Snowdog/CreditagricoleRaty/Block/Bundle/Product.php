@@ -44,15 +44,15 @@ class Snowdog_CreditagricoleRaty_Block_Bundle_Product extends Snowdog_Creditagri
         array $selectionIds,
         $includeTax = true
     ) {
-        /** @var Mage_Tax_Helper_Data $taxHelper */
-        $taxHelper = Mage::helper('tax');
         /** @var Mage_Bundle_Model_Product_Price $priceModel */
         $priceModel = $product->getPriceModel();
 
         if ($selectionIds) {
-            $isPriceFixedType = $product->getPriceType() == Mage_Bundle_Model_Product_Price::PRICE_TYPE_FIXED;
+            /** @var Mage_Tax_Helper_Data $taxHelper */
+            $taxHelper = Mage::helper('tax');
             /** @var Mage_Bundle_Model_Product_Type $typeInstance */
             $typeInstance = $product->getTypeInstance();
+            $isPriceFixedType = $product->getPriceType() == Mage_Bundle_Model_Product_Price::PRICE_TYPE_FIXED;
             $selections = $typeInstance->getSelectionsByIds($selectionIds);
             $finalPrice = 0;
             /** @var Mage_Catalog_Model_Product $selection */
