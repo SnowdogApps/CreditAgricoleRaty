@@ -67,9 +67,12 @@ CreditagricoleRaty.Bundle.prototype = {
         }
         for (var option in bundle.config.selected) {
             if (bundle.config.options[option]) {
+                var selections = bundle.config.options[option].selections,
+                    qty;
                 for (var i = 0; i < bundle.config.selected[option].length; i++) {
                     var options = bundle.config.selected[option];
-                    optionIds.push(options[i]);
+                    qty = selections[options[i]].qty;
+                    optionIds.push(options[i] + '-' + qty);
                 }
             }
         }
