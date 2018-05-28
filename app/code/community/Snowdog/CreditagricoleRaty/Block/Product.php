@@ -5,8 +5,7 @@
  */
 class Snowdog_CreditagricoleRaty_Block_Product extends Snowdog_CreditagricoleRaty_Block_Abstract
 {
-
-    protected $imageModel;
+    protected $_imageModel;
 
     public function _construct()
     {
@@ -54,26 +53,21 @@ class Snowdog_CreditagricoleRaty_Block_Product extends Snowdog_CreditagricoleRat
     {
         return $this->_imageModel->getImageHeight();
     }
-    public function isBundle() {
+
+    public function isBundle()
+    {
         $product = Mage::registry('current_product');
-        switch ($product->getTypeId()) {
-            case Mage_Catalog_Model_Product_Type::TYPE_BUNDLE:
-                return true;
-                break;
-            default:
-                return false;
-        }
+
+        return $product->getTypeId() === Mage_Catalog_Model_Product_Type::TYPE_BUNDLE;
     }
 
-    public function _toHtml()
+    protected function _toHtml()
     {
         $product = Mage::registry('current_product');
         if (Mage::helper('snowcreditagricoleraty')->isProductEligible($product)) {
             return parent::_toHtml();
         }
 
-        return;
+        return '';
     }
-
 }
-
