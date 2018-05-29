@@ -10,7 +10,7 @@ class Snowdog_CreditagricoleRaty_InfoController extends Mage_Core_Controller_Fro
         $request = $this->getRequest();
         $productId = $request->getParam('id');
         $price = $request->getParam('price');
-        $optionIds = $request->getParam('optionIds');
+        $selection = $request->getParam('optionIds');
 
         $product = Mage::getModel('catalog/product')->load($productId);
         if (!$product->getId() || $product->getTypeId() !== Mage_Catalog_Model_Product_Type::TYPE_BUNDLE) {
@@ -26,7 +26,18 @@ class Snowdog_CreditagricoleRaty_InfoController extends Mage_Core_Controller_Fro
         $block = Mage::getBlockSingleton('snowcreditagricoleraty/bundle_product');
         $block->setPrice($price);
         $block->setProductId($productId);
-        $block->setOptionIds(array_filter(explode(',', $optionIds)));
+
+        $selectionQtys = array();
+        $selection = array_filter(explode(',', $selection));
+        foreach ($selection as $item) {
+            if (substr_count($item, '-') !== 1) {
+                continue;
+            }
+            list($selectionId, $qty) = explode('-', $item, 2);
+            $selectionQtys[(int) $selectionId] = (int) $qty;
+        }
+        $block->setSelectionQtys($selectionQtys);
+
         $this->getResponse()->setBody($block->toHtml());
     }
 }

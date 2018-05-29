@@ -15,18 +15,18 @@ class Snowdog_CreditagricoleRaty_Block_Bundle_Product extends Snowdog_Creditagri
     protected function _beforeToHtml()
     {
         $product = Mage::registry('current_product');
-        $selectionIds = $this->getOptionIds();
-        if (!is_array($selectionIds)) {
-            $selectionIds = array();
+        $selectionQtys = $this->getSelectionQtys();
+        if (!is_array($selectionQtys)) {
+            $selectionQtys = array();
         }
-        $finalPrice = $this->_getBundleFinalPrice($product, $selectionIds);
+        $finalPrice = $this->_getBundleFinalPrice($product, $selectionQtys);
 
         $this->setPrice(number_format($finalPrice, 2, '.', ''));
         $this->setMessage(
             Mage::helper('snowcreditagricoleraty')->testBundle(
                 $product->getId(),
                 $finalPrice,
-                $selectionIds
+                array_keys($selectionQtys)
             )
         );
 
@@ -35,25 +35,26 @@ class Snowdog_CreditagricoleRaty_Block_Bundle_Product extends Snowdog_Creditagri
 
     /**
      * @param Mage_Catalog_Model_Product $product
-     * @param array $selectionIds
+     * @param array $selectionQtys
      * @param bool $includeTax
      * @return float
      */
     protected function _getBundleFinalPrice(
         Mage_Catalog_Model_Product $product,
-        array $selectionIds,
+        array $selectionQtys,
         $includeTax = true
     ) {
         /** @var Mage_Bundle_Model_Product_Price $priceModel */
         $priceModel = $product->getPriceModel();
 
-        if ($selectionIds) {
+        if ($selectionQtys) {
             /** @var Mage_Tax_Helper_Data $taxHelper */
             $taxHelper = Mage::helper('tax');
             /** @var Mage_Bundle_Model_Product_Type $typeInstance */
             $typeInstance = $product->getTypeInstance();
             $isPriceFixedType = $product->getPriceType() == Mage_Bundle_Model_Product_Price::PRICE_TYPE_FIXED;
-            $selections = $typeInstance->getSelectionsByIds($selectionIds);
+            $selectionIds = array_keys($selectionQtys);
+            $selections = $typeInstance->getSelectionsByIds($selectionIds, $product);
             $finalPrice = 0;
             /** @var Mage_Catalog_Model_Product $selection */
             foreach ($selections as $selection) {
@@ -61,11 +62,12 @@ class Snowdog_CreditagricoleRaty_Block_Bundle_Product extends Snowdog_Creditagri
                     continue;
                 }
                 $item = $isPriceFixedType ? $product : $selection;
+                $selectionId = (int) $selection->getData('selection_id');
                 $selectionPrice = $priceModel->getSelectionFinalTotalPrice(
                     $product,
                     $selection,
                     1,
-                    null
+                    $selectionQtys[$selectionId]
                 );
                 $finalPrice += $taxHelper->getPrice($item, $selectionPrice, $includeTax);
             }
