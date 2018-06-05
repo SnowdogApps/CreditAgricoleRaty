@@ -1,20 +1,36 @@
-.snowcreditagricoleraty-notenought {
-}
-.snowcreditagricoleraty-tomuch {
-}
-.snowcreditagricoleraty-product {
-}
-.snowcreditagricoleraty-payment-notice {
-}
-.snowcreditagricoleraty-excluded {
-}
 .snowcreditagricoleraty-infobox {
-	text-align: center
-}
-.snowcreditagricoleraty-wrongamount {
+    text-align: center
 }
 #service-calculate-installment button {
     background: none;
-    border: 0px;
+    border: 0;
     cursor: pointer;
+}
+.ca-raty--disabled {
+    display: none;
+}
+.snowcreditagricoleraty-product {
+    position: relative;
+}
+.snowcreditagricoleraty-product__tooltip {
+    position: absolute;
+    top: 0;
+    left: 125px;
+    z-index: 10;
+    background: #fff;
+    padding: 4px 8px;
+    color: #000;
+}
+.snowcreditagricoleraty-product__tooltip--hidden {
+    display: none;
+}
+.snowcreditagricoleraty-product__btn--disabled:hover {
+    cursor: help;
+}
+.snowcreditagricoleraty-product__btn {
+    display: inline-block;
+    width: auto;
+}
+.snowcreditagricoleraty-msg {
+    display: block;
 }
