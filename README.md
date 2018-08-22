@@ -2,7 +2,9 @@
 
 ### [Unreleased] - YYYY-MM-DD
 * Add support for bundle products
-* Enable store identifier configuration on website scope
+
+### 1.5.5
+* Changed store identifier config scope to website
 
 ### 1.5.4
 * Fix for custom/non integer order increment ID
