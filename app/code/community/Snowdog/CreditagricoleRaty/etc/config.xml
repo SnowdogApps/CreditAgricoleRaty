@@ -2,7 +2,7 @@
 <config>
 	<modules>
 		<Snowdog_CreditagricoleRaty>
-			<version>1.5.4</version>
+			<version>1.5.5</version>
 			<depends>
 				<Mage_Payments />
 			</depends>

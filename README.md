@@ -1,5 +1,8 @@
 # Credit Agricole Raty for Magento 1.x
 
+### 1.5.5
+* Changed store identifier config scope to website
+
 ### 1.5.4
 * Fix for custom/non integer order increment ID
 
