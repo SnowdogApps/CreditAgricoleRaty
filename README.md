@@ -1,7 +1,10 @@
 # Credit Agricole Raty for Magento 1.x
 
 ### [Unreleased] - YYYY-MM-DD
-* Add support for bundle products
+*
+
+### 1.6.0 - 2018-09-06
+* Added support for bundle products
 
 ### 1.5.5
 * Changed store identifier config scope to website
