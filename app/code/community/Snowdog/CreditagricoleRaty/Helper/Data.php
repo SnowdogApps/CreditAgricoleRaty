@@ -338,7 +338,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
      * @param Mage_Sales_Model_Order_Item $item
      * @return string
      */
-    public function getItemPrice(Mage_Sales_Model_Order_Item $item): string
+    public function getItemPrice(Mage_Sales_Model_Order_Item $item)
     {
         $total = $item->getPriceInclTax() - $item->getDiscountAmount();
         return number_format($total, 2, '.', '');
