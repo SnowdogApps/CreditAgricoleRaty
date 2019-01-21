@@ -91,7 +91,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 		$xml->writeAttribute("id", "cart");
 		$xml->startElement("element");
 		$xml->writeAttribute("importAs", "cart.shopName.value");
-		$xml->writeRaw(Mage::getStoreConfig("general/store_information/name"));
+		$xml->writeCdata(Mage::getStoreConfig("general/store_information/name"));
 		$xml->endElement();
 		$i = 0;
 		foreach ($order->getAllItems() as $item) {
@@ -102,7 +102,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			++$i;
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemName" . $i . ".value");
-			$xml->writeRaw(mb_substr($item->getName(), 0, 40));
+			$xml->writeCdata(mb_substr($item->getName(), 0, 40));
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemQty" . $i . ".value");
@@ -110,18 +110,14 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemPrice" . $i . ".value");
-			$xml->writeRaw(number_format($item->getPriceInclTax(), 2, '.', ''));
+			$xml->writeRaw($this->getItemPrice($item));
 			$xml->endElement();
 		}
 		if ($order->getDiscountAmount() != 0.00) {
 			++$i;
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemName" . $i . ".value");
-			if ($order->getDiscountDescription()) {
-				$xml->writeRaw(mb_substr($order->getDiscountDescription(), 0, 40));
-			} else {
-				$xml->writeRaw(Mage::helper('snowcreditagricoleraty')->__("Zniżka"));
-			}
+			$xml->writeRaw(Mage::helper('snowcreditagricoleraty')->__("Zniżka %s", $order->getDiscountDescription()));
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemQty" . $i . ".value");
@@ -129,7 +125,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemPrice" . $i . ".value");
-			$xml->writeRaw(number_format($item->getDiscountAmount() * (-1.0), 2, '.', ''));
+			$xml->writeRaw(number_format($order->getDiscountAmount() * (-1.0), 2, '.', ''));
 			$xml->endElement();
 		}
 		if ($order->getShippingInclTax() > 0) {
@@ -200,12 +196,12 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->startElement("element");
 			$xml->writeAttribute("id", "applicantFirstName");
 			$xml->writeAttribute("importAs", "personalData.firstName.value");
-			$xml->writeRaw(mb_substr($order->getCustomerFirstname(), 0, 20));
+			$xml->writeCdata(mb_substr($order->getCustomerFirstname(), 0, 20));
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("id", "applicantLastName");
 			$xml->writeAttribute("importAs", "personalData.lastName.value");
-			$xml->writeRaw(mb_substr($order->getCustomerLastname(), 0, 40));
+			$xml->writeCdata(mb_substr($order->getCustomerLastname(), 0, 40));
 			$xml->endElement();
 			$billingAddres = $order->getBillingAddress();
 			/* @var $billingAddres Mage_Sales_Model_Order_Address */
@@ -214,11 +210,11 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			$xml->writeAttribute("id", "permanentAddress");
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "permanentAddress.streetName.value");
-			$xml->writeRaw($billingAddres->getStreetFull());
+			$xml->writeCdata($billingAddres->getStreetFull());
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "permanentAddress.city.value");
-			$xml->writeRaw($billingAddres->getCity());
+			$xml->writeCdata($billingAddres->getCity());
 			$xml->endElement();
 			$postcode = $billingAddres->getPostcode();
 			$postcode = explode('-', $postcode);
@@ -256,7 +252,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 
 			$items["cart.itemName$i"] 	= mb_substr($item->getName(), 0, 40);
 			$items["cart.itemQty$i"]	= number_format($item->getQtyOrdered(), 0);
-			$items["cart.itemPrice$i"]	= number_format($item->getPriceInclTax(), 2, '.', '');
+			$items["cart.itemPrice$i"]	= $this->getItemPrice($item);
 		}
 
 		//add shipping cost as item
@@ -337,5 +333,15 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 
 		return false;
 	}
+
+    /**
+     * @param Mage_Sales_Model_Order_Item $item
+     * @return string
+     */
+    public function getItemPrice(Mage_Sales_Model_Order_Item $item): string
+    {
+        $total = $item->getPriceInclTax() - $item->getDiscountAmount();
+        return number_format($total, 2, '.', '');
+    }
 
 }
