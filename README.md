@@ -3,6 +3,9 @@
 ### [Unreleased] - YYYY-MM-DD
 *
 
+### 1.7.0 - 2011-01-21
+* Added "Sort Order" configuration option
+
 ### 1.6.1 - 2011-01-21
 * Fixed special chars in string fields (added CDATA section)
 * Fixed price calculations for items. Now the discount is subtracted from the price
