@@ -117,7 +117,7 @@ class Snowdog_CreditagricoleRaty_Helper_Data extends Mage_Core_Helper_Data {
 			++$i;
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemName" . $i . ".value");
-			$xml->writeRaw(Mage::helper('snowcreditagricoleraty')->__("Zniżka %s", $order->getDiscountDescription()));
+			$xml->writeCdata(Mage::helper('snowcreditagricoleraty')->__("Zniżka %s", $order->getDiscountDescription()));
 			$xml->endElement();
 			$xml->startElement("element");
 			$xml->writeAttribute("importAs", "cart.itemQty" . $i . ".value");
