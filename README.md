@@ -1,7 +1,7 @@
 # Credit Agricole Raty for Magento 1.x
 
-### [Unreleased] - YYYY-MM-DD
-*
+### 1.8.0
+* Unlocking a link to re-send the application for guest customers
 
 ### 1.7.1 - 2019-02-28
 * Fix for price calculation for multiple products with discount
